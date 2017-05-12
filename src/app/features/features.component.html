@@ -1,0 +1,27 @@
+<div fxLayout="column" fxFill>
+  <md-toolbar color="primary">
+    <img class="logo-toolbar" src="assets/img/angular-logo.png">
+
+    <button md-icon-button (click)="toggleSidenav()">
+      <md-icon>menu</md-icon>
+    </button>
+
+    <div fxFlex></div>
+
+    <md-select [(ngModel)]="language" (change)="setLanguage(language)">
+      <md-option *ngFor="let l of languages" [value]="l">{{ l }}</md-option>
+    </md-select>
+  </md-toolbar>
+
+  <md-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()">
+    <md-sidenav [opened]="(ui$ | async).isSidenavVisible" mode="side">
+      {{ 'LEFT_SIDENAV_CONTENT' | translate }}
+    </md-sidenav>
+
+    <!-- you'll probably want to add a router-outlet here -->
+    <!-- to display your content accordingly to your routes -->
+    <p>{{ 'TXT_CONTENT' | translate }}</p>
+
+    <button md-button (click)="openSidenav()">{{ 'OPEN_LEFT_SIDENAV' | translate }}</button>
+  </md-sidenav-container>
+</div>
