@@ -18,7 +18,7 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-tra
 import './rxjs-operators';
 import { createTranslateLoader } from '../shared/helpers/aot.helper';
 import { LANGUAGES } from './injection-tokens';
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { getRootReducer } from './../shared/states/root.reducer';
 
 /**
