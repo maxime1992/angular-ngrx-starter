@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Http } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -29,7 +28,6 @@ import { getRootReducer } from './../shared/states/root.reducer';
   imports: [
     // START : Do not add your libs here
     BrowserAnimationsModule,
-    FlexLayoutModule,
     // TODO : Keep an eye on ngrx V3 to have lazy loaded reducers
     // https://github.com/ngrx/store/pull/269
     StoreModule.provideStore(getRootReducer),

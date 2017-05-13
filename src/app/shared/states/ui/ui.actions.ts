@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 
-// const rn = '[Ui]';
-
 export const SET_LANGUAGE = 'Set language';
 export class SetLanguage implements Action {
   readonly type = SET_LANGUAGE;

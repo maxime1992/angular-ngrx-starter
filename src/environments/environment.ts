@@ -20,7 +20,7 @@ export const environment = {
   // or hit the real API
   mock: true,
 
-  // HTTPDELAY
+  // HTTPDELAY (ms)
   // when using mocked data, you can use that
   // variable with `.delay` to simulate a network latency
   httpDelay: 500,
