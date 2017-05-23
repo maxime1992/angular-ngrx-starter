@@ -25,13 +25,13 @@ export class FeaturesComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(LANGUAGES) public languages,
-    private _store$: Store<IStore>
+    private store$: Store<IStore>
   ) { }
 
   ngOnInit() {
-    this.ui$ = this._store$.select(state => state.ui);
+    this.ui$ = this.store$.select(state => state.ui);
 
-    this.language$ = this._store$.select(state => state.ui.language);
+    this.language$ = this.store$.select(state => state.ui.language);
 
     this
       .language$
@@ -48,18 +48,18 @@ export class FeaturesComponent implements OnInit, OnDestroy {
   }
 
   openSidenav() {
-    this._store$.dispatch(new UiActions.OpenSidenav());
+    this.store$.dispatch(new UiActions.OpenSidenav());
   }
 
   closeSidenav() {
-    this._store$.dispatch(new UiActions.CloseSidenav());
+    this.store$.dispatch(new UiActions.CloseSidenav());
   }
 
   toggleSidenav() {
-    this._store$.dispatch(new UiActions.ToggleSidenav());
+    this.store$.dispatch(new UiActions.ToggleSidenav());
   }
 
   setLanguage(language: string) {
-    this._store$.dispatch(new UiActions.SetLanguage({ language }));
+    this.store$.dispatch(new UiActions.SetLanguage({ language }));
   }
 }

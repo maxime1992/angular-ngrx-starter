@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { IStore } from 'app/shared/interfaces/store.interface';
 import { LANGUAGES } from 'app/core/injection-tokens';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -16,26 +17,33 @@ export class AppComponent implements OnInit, OnDestroy {
   private onDestroy$ = new Subject<void>();
 
   constructor(
-    private _translate: TranslateService,
+    private translate: TranslateService,
     @Inject(LANGUAGES) public languages,
-    private _store$: Store<IStore>
+    private store$: Store<IStore>
   ) { }
 
   ngOnInit() {
+    const browserLanguage = this.translate.getBrowserLang();
+
+    // if dev decided to use the browser language as default and if this language is handled by the app, use it
+    const defaultLanguage = environment.useBrowserLanguageAsDefault
+      && this.languages.includes(browserLanguage)
+      ? browserLanguage
+      : this.languages[0];
+
     // default and fallback language
     // if a translation isn't found in a language,
     // it'll try to get it on the default language
-    // by default here, we take the first of the array
-    this._translate.setDefaultLang(this.languages[0]);
-    this._store$.dispatch(new UiActions.SetLanguage({ language: this.languages[0] }));
+    this.translate.setDefaultLang(defaultLanguage);
+    this.store$.dispatch(new UiActions.SetLanguage({ language: defaultLanguage }));
 
     // when the language changes in store,
     // change it in translate provider
-    this._store$
+    this.store$
       .select(state => state.ui.language)
       .takeUntil(this.onDestroy$)
       .filter(language => !!language)
-      .do(language => this._translate.use(language))
+      .do(language => this.translate.use(language))
       .subscribe();
   }
 

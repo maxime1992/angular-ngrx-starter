@@ -46,6 +46,9 @@ import { getRootReducer } from './../shared/states/root.reducer';
     {
       provide: LANGUAGES,
       // order matters : The first one will be used by default
+      // to be accuracte, it will depend if you've set environment.useBrowserLanguageAsDefault to true or not
+      // if it's set to true, it'll first try to use the browser language and if not available, fallback to the
+      // firt language of the following array
       useValue: ['en', 'fr']
     },
     // use hash location strategy or not based on env
