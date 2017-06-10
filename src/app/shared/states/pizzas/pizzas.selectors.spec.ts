@@ -1,11 +1,9 @@
 describe(`Pizzas selectors`, () => {
   describe(`getSomething`, () => {
-    it(`should ...`, () => {
-    });
+    it(`should ...`, () => {});
   });
 
   describe(`getSomethingElse`, () => {
-    it(`should ...`, () => {
-    });
+    it(`should ...`, () => {});
   });
 });

@@ -14,15 +14,17 @@ export class PizzasEffects {
     private store$: Store<IStore>,
     private actions$: Actions,
     private pizzasService: PizzasService
-  ) { }
+  ) {}
 
   // tslint:disable-next-line:member-ordering
-  @Effect({ dispatch: true }) fetchPizzaDetails$: Observable<Action> = this.actions$
+  @Effect({ dispatch: true })
+  fetchPizzaDetails$: Observable<Action> = this.actions$
     .ofType(PizzasActions.FETCH_PIZZA_DETAILS)
     .switchMap((action: PizzasActions.FetchPizzaDetails) =>
-      this.pizzasService.fetchPizza(action.payload.id)
+      this.pizzasService
+        .fetchPizza(action.payload.id)
         .map(pizza => new PizzasActions.FetchPizzaDetailsSuccess(pizza))
-        .catch((err) => {
+        .catch(err => {
           if (environment.debug) {
             console.group();
             console.warn('Error caught in pizzas.effects:');
@@ -30,7 +32,12 @@ export class PizzasEffects {
             console.groupEnd();
           }
 
-          return Observable.of(new PizzasActions.FetchPizzaDetailsFailed({ id: action.payload.id, error: err }));
+          return Observable.of(
+            new PizzasActions.FetchPizzaDetailsFailed({
+              id: action.payload.id,
+              error: err,
+            })
+          );
         })
     );
 }

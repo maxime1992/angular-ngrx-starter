@@ -7,8 +7,8 @@ import { IStore } from 'app/shared/interfaces/store.interface';
 // will be applied to your result without the need to do it yourself
 // (and as you don't have an Observable, it'd be complicated)
 // instead of returning a type any, you should be more specific
-export function getSomething(store: IStore): any { }
+export function getSomething(store: IStore): any {}
 
 // - 2) you'll pass the whole observable of the store to your function
 // this might be useful if you're waiting for some value(s) to be available for example
-export function getSomethingElse(store$: Observable<IStore>): any { }
+export function getSomethingElse(store$: Observable<IStore>): any {}

@@ -11,14 +11,18 @@ import { uiReducer } from './ui/ui.reducer';
 
 const reducers = {
   // pass your reducers here
-  ui: uiReducer
+  ui: uiReducer,
 };
 
 // ------------------------------------------------------------------------------
 
 // if environment is != from production
 // use storeFreeze to avoid state mutation
-const developmentReducer = compose(storeFreeze, enableBatching, combineReducers)(reducers);
+const developmentReducer = compose(
+  storeFreeze,
+  enableBatching,
+  combineReducers
+)(reducers);
 const productionReducer = compose(enableBatching, combineReducers)(reducers);
 
 // enableBatching allows us to dispatch multiple actions

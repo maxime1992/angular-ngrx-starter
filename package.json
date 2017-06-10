@@ -10,7 +10,26 @@
     "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "ng build --prod --e=prod --no-sourcemap"
+    "prod": "ng build --prod --e=prod --no-sourcemap",
+    "prettier:ts:base": "yarn run prettier -- --parser typescript --single-quote --trailing-comma es5",
+    "prettier:ts:check": "yarn run prettier:ts:base -- -l \"./{e2e,src}/**/*.ts\"",
+    "prettier:ts:write": "yarn run prettier:ts:base -- --write \"./{e2e,src}/**/*.ts\"",
+    "prettier:scss:base": "yarn run prettier -- --parser postcss",
+    "prettier:scss:check": "yarn run prettier:scss:base -- -l \"./{e2e,src}/**/*.scss\"",
+    "prettier:scss:write": "yarn run prettier:scss:base -- --write \"./{e2e,src}/**/*.scss\"",
+    "prettier:check": "yarn run prettier:ts:check && yarn run prettier:scss:check",
+    "prettier:write": "yarn run prettier:ts:write && yarn run prettier:scss:write",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.ts": [
+        "yarn run prettier:ts:base -- -l"
+      ],
+      "*.scss": [
+        "yarn run prettier:scss:base -- -l"
+      ]
+    }
   },
   "private": true,
   "dependencies": {
@@ -47,10 +66,13 @@
     "@types/jest": "19.2.3",
     "@types/node": "7.0.8",
     "codelyzer": "3.0.0-beta.3",
+    "husky": "0.13.4",
     "jasmine-core": "2.6.1",
     "jasmine-spec-reporter": "4.1.0",
     "jest": "19.0.2",
     "jest-preset-angular": "1.2.1",
+    "lint-staged": "3.6.0",
+    "prettier": "1.4.4",
     "protractor": "5.1.1",
     "ts-node": "3.0.4",
     "tslint": "4.5.1",

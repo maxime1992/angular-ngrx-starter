@@ -11,7 +11,7 @@ import { environment } from 'environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   private onDestroy$ = new Subject<void>();
@@ -20,14 +20,14 @@ export class AppComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     @Inject(LANGUAGES) public languages,
     private store$: Store<IStore>
-  ) { }
+  ) {}
 
   ngOnInit() {
     const browserLanguage = this.translate.getBrowserLang();
 
     // if dev decided to use the browser language as default and if this language is handled by the app, use it
-    const defaultLanguage = environment.useBrowserLanguageAsDefault
-      && this.languages.includes(browserLanguage)
+    const defaultLanguage = environment.useBrowserLanguageAsDefault &&
+      this.languages.includes(browserLanguage)
       ? browserLanguage
       : this.languages[0];
 
@@ -35,7 +35,9 @@ export class AppComponent implements OnInit, OnDestroy {
     // if a translation isn't found in a language,
     // it'll try to get it on the default language
     this.translate.setDefaultLang(defaultLanguage);
-    this.store$.dispatch(new UiActions.SetLanguage({ language: defaultLanguage }));
+    this.store$.dispatch(
+      new UiActions.SetLanguage({ language: defaultLanguage })
+    );
 
     // when the language changes in store,
     // change it in translate provider

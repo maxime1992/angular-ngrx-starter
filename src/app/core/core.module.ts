@@ -1,12 +1,20 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  LocationStrategy,
+  HashLocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { Http } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateStaticLoader,
+} from 'ng2-translate';
 // import hammerjs only if needed :
 // From https://material.angular.io/guide/getting-started#additional-setup-for-gestures
 // Some components (md-slide-toggle, md-slider, mdTooltip) rely on HammerJS for gestures
@@ -34,9 +42,9 @@ import { getRootReducer } from './../shared/states/root.reducer';
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [Http]
-    })
+      useFactory: createTranslateLoader,
+      deps: [Http],
+    }),
     // END : Do not add your libs here
 
     // pass every effect here, one per line
@@ -49,13 +57,15 @@ import { getRootReducer } from './../shared/states/root.reducer';
       // to be accuracte, it will depend if you've set environment.useBrowserLanguageAsDefault to true or not
       // if it's set to true, it'll first try to use the browser language and if not available, fallback to the
       // firt language of the following array
-      useValue: ['en', 'fr']
+      useValue: ['en', 'fr'],
     },
     // use hash location strategy or not based on env
     {
       provide: LocationStrategy,
-      useClass: (environment.hashLocationStrategy ? HashLocationStrategy : PathLocationStrategy)
-    }
-  ]
+      useClass: environment.hashLocationStrategy
+        ? HashLocationStrategy
+        : PathLocationStrategy,
+    },
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}

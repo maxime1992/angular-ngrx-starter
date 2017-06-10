@@ -21,13 +21,16 @@ describe(`Pizzas reducer`, () => {
             isRemoving: false,
             isRemovingError: '',
             isEditingName: false,
-            isEditingNameError: ''
-          }
+            isEditingNameError: '',
+          },
         },
-        allIds: ['pizzaId0']
+        allIds: ['pizzaId0'],
       };
 
-      const newState = pizzaReducer(initialState, new PizzasActions.FetchPizzaDetails({ id: 'pizzaId0' }));
+      const newState = pizzaReducer(
+        initialState,
+        new PizzasActions.FetchPizzaDetails({ id: 'pizzaId0' })
+      );
 
       const expectedState: IPizzasTable = {
         isAdding: false,
@@ -45,10 +48,10 @@ describe(`Pizzas reducer`, () => {
             isRemoving: false,
             isRemovingError: '',
             isEditingName: false,
-            isEditingNameError: ''
-          }
+            isEditingNameError: '',
+          },
         },
-        allIds: ['pizzaId0']
+        allIds: ['pizzaId0'],
       };
 
       expect(newState).toEqual(expectedState);
