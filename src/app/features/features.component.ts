@@ -13,7 +13,7 @@ import { IUi } from 'app/shared/states/ui/ui.interface';
 @Component({
   selector: 'app-features',
   templateUrl: './features.component.html',
-  styleUrls: ['./features.component.scss']
+  styleUrls: ['./features.component.scss'],
 })
 export class FeaturesComponent implements OnInit, OnDestroy {
   private componentDestroyed$ = new Subject<void>();
@@ -26,15 +26,14 @@ export class FeaturesComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(LANGUAGES) public languages,
     private store$: Store<IStore>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.ui$ = this.store$.select(state => state.ui);
 
     this.language$ = this.store$.select(state => state.ui.language);
 
-    this
-      .language$
+    this.language$
       .takeUntil(this.componentDestroyed$)
       .do(language => {
         this.language = language;

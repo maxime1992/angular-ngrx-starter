@@ -5,10 +5,7 @@ import { FeaturesRoutingModule } from './features-routing.module';
 import { FeaturesComponent } from './features.component';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    FeaturesRoutingModule
-  ],
-  declarations: [FeaturesComponent]
+  imports: [SharedModule, FeaturesRoutingModule],
+  declarations: [FeaturesComponent],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}

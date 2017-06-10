@@ -1,8 +1,6 @@
 @import './_utils';
 
-html,
-body,
-app-root {
+html, body, app-root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -36,9 +34,19 @@ app-root {
 // use <prettyjson [obj]="someObj"></prettyjson>
 // instead of json pipe to have a pretty debug
 pre {
-  .string { color: green; }
-  .number { color: darkorange; }
-  .boolean { color: blue; }
-  .null { color: magenta; }
-  .key { color: red; }
+  .string {
+    color: green;
+  }
+  .number {
+    color: darkorange;
+  }
+  .boolean {
+    color: blue;
+  }
+  .null {
+    color: magenta;
+  }
+  .key {
+    color: red;
+  }
 }

@@ -17,25 +17,25 @@ export const FETCH_PIZZA_DETAILS = 'Fetch pizza details';
 export class FetchPizzaDetails implements Action {
   readonly type = FETCH_PIZZA_DETAILS;
 
-  constructor(public payload: { id: string }) { }
+  constructor(public payload: { id: string }) {}
 }
 
 export const FETCH_PIZZA_DETAILS_SUCCESS = 'Fetch pizza details success';
 export class FetchPizzaDetailsSuccess implements Action {
   readonly type = FETCH_PIZZA_DETAILS_SUCCESS;
 
-  constructor(public payload: IPizzaBackendWithDetailsAndFkUi) { }
+  constructor(public payload: IPizzaBackendWithDetailsAndFkUi) {}
 }
 
 export const FETCH_PIZZA_DETAILS_FAILED = 'Fetch pizza details failed';
 export class FetchPizzaDetailsFailed implements Action {
   readonly type = FETCH_PIZZA_DETAILS_FAILED;
 
-  constructor(public payload: { id: string, error: string }) { }
+  constructor(public payload: { id: string; error: string }) {}
 }
 
 // list every action class here
-export type All
-  = FetchPizzaDetails
+export type All =
+  | FetchPizzaDetails
   | FetchPizzaDetailsSuccess
   | FetchPizzaDetailsFailed;

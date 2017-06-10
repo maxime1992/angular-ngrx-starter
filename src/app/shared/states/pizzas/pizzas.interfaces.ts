@@ -31,11 +31,11 @@ interface IPizzaUi {
 
 // definition of everything related to a minimal Pizza **and** UI
 // tslint:disable-next-line:no-empty-interface
-export interface IPizzaBackendWithoutDetailsUi extends IPizzaBackendWithoutDetails, IPizzaUi { }
+export interface IPizzaBackendWithoutDetailsUi extends IPizzaBackendWithoutDetails, IPizzaUi {}
 
 // definition of everything related to a detailed Pizza **and** UI
 // tslint:disable-next-line:no-empty-interface
-export interface IPizzaBackendWithDetailsAndFkUi extends IPizzaBackendWithDetailsAndFk, IPizzaUi { }
+export interface IPizzaBackendWithDetailsAndFkUi extends IPizzaBackendWithDetailsAndFk, IPizzaUi {}
 
 // ----------------------------------------------------------------------------
 
