@@ -59,7 +59,7 @@ You should take a look into the other classes too, just so you know they exists 
 
 I am no expert in Material theming and I'm sure there are better solutions available. Feel free to make a PR or point to some good articles/documentation.
 
-# Environments
+# Environments (build-time)
 ## /src/environments
 By default, there are 2 environments : Dev and prod. This is from `@angular/cli`. Remember to always **import in your app the `environment.ts`**, not `environment.prod.ts`.  
 
@@ -72,6 +72,20 @@ Based on previous works, I've added some useful variables :
  - `httpDelay`: When you have `mock` set to true, it might be a good idea to simulate a small latency for your http requests (300~500ms)  
  - `hashLocationStrategy`: Set it to true if you want to have your URLs in the old school mode : `my-website/#/my/spa/routing`. By default set to false and thus your URLs won't have the `#` and will look like that : `my-website/my/spa/routing`  
  - `debug`: You might use this variable to print (or not) some debug information in your app. This is different than `production` variable because you might want to display some debug in production too (eg if you create another environment `e2e-prod` where you set `production` to true, so your E2E tests run the same environment that the final one but you want the debug output in case something goes wrong)  
+
+# Environments (dynamic, at runtime)
+## /assets/runtime-environments
+Sometimes, you might want to have dynamic environment variables, loaded at runtime.  
+The main idea behind that is to be able to load it from a server, either from a given API or a simple `.json` file. That way, you can avoid to compile your project multiple times for different environments.  
+
+How to use it: Add a `json` file per required environment in `/assets/runtime-environments`.  
+Then take a look into `/app/core/runtime-environment.service.ts`. It's a simple guard from where you can handle some logic to let the app know which `json` should be loaded. By default, it'll try to load `/src/assets/runtime-environments/runtime-environment.json`.  
+
+Then into the app, use the `RuntimeEnvironmentService` like that: `constructor(private runEnv: RuntimeEnvironmentService) {}`. And you'll be able to access your environment variable: `this.runEnv.environment`.  
+
+If you don't want that feature and keep your main route as fast as possible without being blocked while trying to fetch the `json` file, just turn that feature off into the build environment `/src/environments/environment*.ts` (set property `loadRuntimeEnvironment` to false).  
+
+**This feature has been turned off by default**.
 
 # assets
 ## /src/assets
