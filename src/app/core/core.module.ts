@@ -27,6 +27,7 @@ import { createTranslateLoader } from '../shared/helpers/aot.helper';
 import { LANGUAGES } from './injection-tokens';
 import { environment } from './../../environments/environment';
 import { getRootReducer } from './../shared/states/root.reducer';
+import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
 
 /**
  * this module will be imported only once, in AppModule and shouldn't be imported from anywhere else
@@ -66,6 +67,7 @@ import { getRootReducer } from './../shared/states/root.reducer';
         ? HashLocationStrategy
         : PathLocationStrategy,
     },
+    RuntimeEnvironmentService,
   ],
 })
 export class CoreModule {}

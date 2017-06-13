@@ -40,4 +40,9 @@ export const environment = {
   // console.log should be used only in dev and never commited
   // this way you can find every console.log very easily
   debug: true,
+
+  // cli environments are great but sometimes you might want to
+  // have a dynamic environment (at runtime)
+  // if so, take a look into /assets/runtime-environments
+  loadRuntimeEnvironment: false,
 };
