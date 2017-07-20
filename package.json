@@ -18,7 +18,8 @@
     "prettier:base-files": "yarn run prettier:base -- './{e2e,src}/**/*.{scss,ts}'",
     "prettier:fix": "yarn run prettier:base-files -- --write",
     "prettier:check": "yarn run prettier:base-files -- -l",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepush": "yarn run lint:check"
   },
   "lint-staged": {
     "linters": {
