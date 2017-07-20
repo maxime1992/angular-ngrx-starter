@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   LocationStrategy,
@@ -6,15 +6,9 @@ import {
   PathLocationStrategy,
 } from '@angular/common';
 import { Http } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateStaticLoader,
-} from 'ng2-translate';
+import { TranslateModule, TranslateLoader } from 'ng2-translate';
 // import hammerjs only if needed :
 // From https://material.angular.io/guide/getting-started#additional-setup-for-gestures
 // Some components (md-slide-toggle, md-slider, mdTooltip) rely on HammerJS for gestures

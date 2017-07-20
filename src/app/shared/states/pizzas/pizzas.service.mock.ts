@@ -1,14 +1,10 @@
-import { Http } from '@angular/http';
-import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {
   IPizzaBackendWithDetailsAndFk,
   IPizzaBackendWithDetailsAndFkUi,
 } from 'app/shared/states/pizzas/pizzas.interfaces';
-import { environment } from 'environments/environment';
 import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
-import { responseBody } from 'app/shared/helpers/mock.helper';
 
 // your mock should extends either the abstract class (PizzasService)
 // or the implementation (PizzasServiceImpl)

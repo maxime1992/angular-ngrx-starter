@@ -1,8 +1,6 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
-import { TranslateService } from 'ng2-translate';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
 import { LANGUAGES } from '../core/injection-tokens';

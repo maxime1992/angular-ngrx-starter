@@ -14,7 +14,8 @@ export interface IPizzaBackendWithDetails extends IPizzaBackendWithoutDetails {
 }
 
 // definition of a "detailed" Pizza as it is on the backend with foreign keys
-export interface IPizzaBackendWithDetailsAndFk extends IPizzaBackendWithDetails {
+export interface IPizzaBackendWithDetailsAndFk
+  extends IPizzaBackendWithDetails {
   // here ingredientsIds refers to ingredients stored into another reducer
   readonly ingredientsIds: string[];
 }
@@ -30,10 +31,14 @@ interface IPizzaUi {
 }
 
 // definition of everything related to a minimal Pizza **and** UI
-export interface IPizzaBackendWithoutDetailsUi extends IPizzaBackendWithoutDetails, IPizzaUi {}
+export interface IPizzaBackendWithoutDetailsUi
+  extends IPizzaBackendWithoutDetails,
+    IPizzaUi {}
 
 // definition of everything related to a detailed Pizza **and** UI
-export interface IPizzaBackendWithDetailsAndFkUi extends IPizzaBackendWithDetailsAndFk, IPizzaUi {}
+export interface IPizzaBackendWithDetailsAndFkUi
+  extends IPizzaBackendWithDetailsAndFk,
+    IPizzaUi {}
 
 // ----------------------------------------------------------------------------
 

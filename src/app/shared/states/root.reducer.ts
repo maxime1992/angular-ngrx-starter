@@ -1,4 +1,4 @@
-import { combineReducers, provideStore } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { enableBatching } from 'redux-batched-actions';
