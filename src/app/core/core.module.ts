@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Http } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateModule, TranslateLoader } from 'ng2-translate';
@@ -25,6 +25,7 @@ import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service'
   imports: [
     // START : Do not add your libs here
     BrowserAnimationsModule,
+    HttpModule,
     // TODO : Keep an eye on ngrx V3 to have lazy loaded reducers
     // https://github.com/ngrx/store/pull/269
     StoreModule.provideStore(getRootReducer),

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from 'ng2-translate';
 import { PrettyJsonModule } from 'angular2-prettyjson';
+
 // we now have to import every sub modules of material we want to use
 import {
   MdButtonModule,
@@ -48,7 +48,6 @@ export const modules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  HttpModule,
   RouterModule,
   FlexLayoutModule,
   StoreModule,
