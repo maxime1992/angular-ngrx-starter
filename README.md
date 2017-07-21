@@ -1,5 +1,7 @@
 # Angular Ngrx Starter
 
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 *An opiniated Angular setup based on @angular/cli*
 
 [Angular-Cli](https://github.com/angular/angular-cli) can help you start an Angular project very quickly.
@@ -27,7 +29,7 @@ Don't forget to install and take a look to [Redux DevTools](https://chrome.googl
 
 <hr>
 
-Before we start digging into the architecture of this project, you have to know that *[Prettier](https://github.com/prettier/prettier)* is already setup and thus, you can format all your `.ts` and `.scss` by simply running `yarn run prettier:write`. If you have a CI setup, you might want to run `yarn run prettier:check` to make sure every file is correctly formatted.
+Before we start digging into the architecture of this project, you have to know that *[Prettier](https://github.com/prettier/prettier)* is already setup and thus, you can format all your `.ts` and `.scss` by simply running `yarn run prettier:fix`. If you have a CI setup, you might want to run `yarn run prettier:check` to make sure every file is correctly formatted.
 
 Also, a pre-commit hook has been setup and before you commit something, it'll check if all the file are well formatted. If you want to disable that behavior, remove `.git/hooks/pre-commit` and also the `precommit` key in `package.json`.
 
