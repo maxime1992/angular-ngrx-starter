@@ -20,12 +20,12 @@ export class RuntimeEnvironmentService implements CanActivate {
       return this.http
         .get('assets/runtime-environments/runtime-environment.json')
         .map(res => res.json())
-        .do(environment => (this.environment = environment))
+        .do(env => (this.environment = env))
         .mapTo(true)
         .catch(_ => {
-          throw new Error(
-            'Error while trying to fetch the runtime environment'
-          );
+          console.error('Error while trying to fetch the runtime environment');
+
+          return Observable.of(false);
         });
     }
 

@@ -1,4 +1,4 @@
-import { combineReducers, provideStore } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { enableBatching } from 'redux-batched-actions';
@@ -29,7 +29,7 @@ const productionReducer = compose(enableBatching, combineReducers)(reducers);
 // without letting the subscribers being warned between the actions
 // only at the end : https://github.com/tshelburne/redux-batched-actions
 // can be very handy when normalizing HTTP response
-export function getRootReducer(state: IStore, action: any): IStore {
+export function getRootReducer(state: IStore, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
   } else {

@@ -26,10 +26,11 @@ export class AppComponent implements OnInit, OnDestroy {
     const browserLanguage = this.translate.getBrowserLang();
 
     // if dev decided to use the browser language as default and if this language is handled by the app, use it
-    const defaultLanguage = environment.useBrowserLanguageAsDefault &&
+    const defaultLanguage =
+      environment.useBrowserLanguageAsDefault &&
       this.languages.includes(browserLanguage)
-      ? browserLanguage
-      : this.languages[0];
+        ? browserLanguage
+        : this.languages[0];
 
     // default and fallback language
     // if a translation isn't found in a language,

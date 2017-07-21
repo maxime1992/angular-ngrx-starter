@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { Action, Store } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
-import { IStore } from 'app/shared/interfaces/store.interface';
 import * as PizzasActions from './pizzas.actions';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
 import { environment } from 'environments/environment';
@@ -11,7 +9,9 @@ import { environment } from 'environments/environment';
 @Injectable()
 export class PizzasEffects {
   constructor(
-    private store$: Store<IStore>,
+    // if needed, you can inject the store to get some part of
+    // it with a `withLatestFrom` for example
+    // private store$: Store<IStore>,
     private actions$: Actions,
     private pizzasService: PizzasService
   ) {}
