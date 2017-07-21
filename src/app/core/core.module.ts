@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  LocationStrategy,
-  HashLocationStrategy,
-  PathLocationStrategy,
-} from '@angular/common';
 import { Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -19,7 +14,6 @@ import { TranslateModule, TranslateLoader } from 'ng2-translate';
 import './rxjs-operators';
 import { createTranslateLoader } from '../shared/helpers/aot.helper';
 import { LANGUAGES } from './injection-tokens';
-import { environment } from './../../environments/environment';
 import { getRootReducer } from './../shared/states/root.reducer';
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
 
@@ -53,13 +47,6 @@ import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service'
       // if it's set to true, it'll first try to use the browser language and if not available, fallback to the
       // firt language of the following array
       useValue: ['en', 'fr'],
-    },
-    // use hash location strategy or not based on env
-    {
-      provide: LocationStrategy,
-      useClass: environment.hashLocationStrategy
-        ? HashLocationStrategy
-        : PathLocationStrategy,
     },
     RuntimeEnvironmentService,
   ],
