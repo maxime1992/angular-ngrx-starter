@@ -29,16 +29,21 @@ Don't forget to install and take a look to [Redux DevTools](https://chrome.googl
 
 <hr>
 
+# Lint, format and IDE setup
+## Prettier
 Before we start digging into the architecture of this project, you have to know that *[Prettier](https://github.com/prettier/prettier)* is already setup and thus, you can format all your `.ts` and `.scss` by simply running `yarn run prettier:fix`. If you have a CI setup, you might want to run `yarn run prettier:check` to make sure every file is correctly formatted.
 
 Also, a pre-commit hook has been setup and before you commit something, it'll check if all the file are well formatted. If you want to disable that behavior, remove `.git/hooks/pre-commit` and also the `precommit` key in `package.json`.
 
 Last thing about *Prettier*: If you decide to keep the pre-commit hook and if your `package.json` is not at the root of your project (for example if you have a frontend and a backend folder and you want to use prettier in frontend). You'll have to add `"gitDir": "../"` within the `lint-staged` property of `package.json` (at the same level of the `linters` key).
 
+## Visual Studio Code
+Of course, you can use your favorite editor/IDE. If you decide to use VSC, you might want to install [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template). It'll give you autocompletion and type checking into your HTML templates.
+
 <hr>
 
 What you need to know to start with this template :  
-*(all the code contains a lot of comments, so while reading the differents parts of this readme, I invite you to look the according files)*
+*(all the code contains a lot of comments, so while reading the differents parts of this readme, I invite you to look the according files)*.
 
 # Styles
 ## /src/styles.scss
