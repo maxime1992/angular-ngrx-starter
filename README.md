@@ -27,6 +27,9 @@ I've put a lot of comments and a folder called "pizzas" for demo/scaffolding.
 
 Don't forget to install and take a look to [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) for state debugging.
 
+## Note on service-worker
+The starter is pre-configured to generate a service-worker (thanks to angular-cli) and the only thing you need to do if you want your app to work offline, is to set `serviceWorker` to `true` in `.angular-cli.json`.
+
 <hr>
 
 # Lint, format and IDE setup
