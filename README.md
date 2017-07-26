@@ -16,7 +16,6 @@ But when you need a lot of external modules/libs and you've got to setup everyth
   - Store  
   - Effects  
   - StoreDevtools
-- Jest (instead of Karma)
 
 If you don't know angular-cli, please read the doc.
 
