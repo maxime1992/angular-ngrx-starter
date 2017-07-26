@@ -14,7 +14,7 @@
     "check": "yarn-or-npm run lint:check && yarn-or-npm run prettier:check",
     "check:fix": "yarn-or-npm run lint:fix && yarn-or-npm run prettier:fix",
     "prettier:base": "yarn-or-npm run prettier -- --single-quote --trailing-comma es5",
-    "prettier:base-files": "yarn-or-npm run prettier:base -- './{e2e,src}/**/*.{scss,ts}'",
+    "prettier:base-files": "yarn-or-npm run prettier:base -- \"./{e2e,src}/**/*.{scss,ts}\"",
     "prettier:fix": "yarn-or-npm run prettier:base-files -- --write",
     "prettier:check": "yarn-or-npm run prettier:base-files -- -l",
     "precommit": "lint-staged",
