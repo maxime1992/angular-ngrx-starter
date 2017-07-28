@@ -18,6 +18,7 @@
     "no-unused-variable": [true, {"ignore-pattern": "^_"}],
     "ban": [true, ["fit"], ["fdescribe"], ["xit"], ["xdescribe"]],
     "banana-in-box": true,
-    "templates-no-negated-async": true
+    "templates-no-negated-async": true,
+    "ordered-imports": [true]
   }
 }
