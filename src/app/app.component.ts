@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate';
 import { Subject } from 'rxjs/Subject';
-import { Store } from '@ngrx/store';
 
-import * as UiActions from 'app/shared/states/ui/ui.actions';
-import { IStore } from 'app/shared/interfaces/store.interface';
 import { LANGUAGES } from 'app/core/injection-tokens';
+import { IStore } from 'app/shared/interfaces/store.interface';
+import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { environment } from 'environments/environment';
 
 @Component({

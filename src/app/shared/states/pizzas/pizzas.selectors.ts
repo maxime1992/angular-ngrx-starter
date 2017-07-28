@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs/Observable';
 import { IStore } from 'app/shared/interfaces/store.interface';
+import { Observable } from 'rxjs/Observable';
 
 // you can think of your selectors in two distinct cases :
 // - 1) you'll pass your function directly to the `select` operator proposed by ngrx

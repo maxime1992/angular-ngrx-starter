@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
+import { Http, HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateModule, TranslateLoader } from 'ng2-translate';
+import { TranslateLoader, TranslateModule } from 'ng2-translate';
 // import hammerjs only if needed :
 // From https://material.angular.io/guide/getting-started#additional-setup-for-gestures
 // Some components (md-slide-toggle, md-slider, mdTooltip) rely on HammerJS for gestures
@@ -11,11 +11,11 @@ import { TranslateModule, TranslateLoader } from 'ng2-translate';
 // import 'hammerjs';
 
 // import RxJs needed operators only once
-import './rxjs-operators';
-import { createTranslateLoader } from '../shared/helpers/aot.helper';
-import { LANGUAGES } from './injection-tokens';
-import { getRootReducer } from './../shared/states/root.reducer';
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
+import { createTranslateLoader } from '../shared/helpers/aot.helper';
+import { getRootReducer } from './../shared/states/root.reducer';
+import { LANGUAGES } from './injection-tokens';
+import './rxjs-operators';
 
 /**
  * this module will be imported only once, in AppModule and shouldn't be imported from anywhere else

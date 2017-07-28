@@ -1,6 +1,6 @@
-import { pizzaReducer } from 'app/shared/states/pizzas/pizzas.reducer';
-import { IPizzasTable } from 'app/shared/states/pizzas/pizzas.interfaces';
 import * as PizzasActions from 'app/shared/states/pizzas/pizzas.actions';
+import { IPizzasTable } from 'app/shared/states/pizzas/pizzas.interfaces';
+import { pizzaReducer } from 'app/shared/states/pizzas/pizzas.reducer';
 
 describe(`Pizzas reducer`, () => {
   describe(PizzasActions.FETCH_PIZZA_DETAILS, () => {

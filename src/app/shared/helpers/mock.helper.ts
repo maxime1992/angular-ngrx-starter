@@ -1,6 +1,6 @@
-import { ResponseOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Response, ResponseOptions } from '@angular/http';
 import { environment } from 'environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * simulate the behaviour of Angular's Http module:

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreModule } from '@ngrx/store';
-import { TranslateModule } from 'ng2-translate';
 import { PrettyJsonModule } from 'angular2-prettyjson';
+import { TranslateModule } from 'ng2-translate';
 
 // we now have to import every sub modules of material we want to use
 import {
@@ -17,11 +17,11 @@ import {
   MdListModule,
   MdProgressSpinnerModule,
   MdRippleModule,
+  MdSelectModule,
   MdSidenavModule,
   MdTabsModule,
   MdToolbarModule,
   MdTooltipModule,
-  MdSelectModule,
 } from '@angular/material';
 
 const MaterialModules = [

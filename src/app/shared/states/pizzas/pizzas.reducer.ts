@@ -1,5 +1,5 @@
-import { IPizzasTable } from 'app/shared/states/pizzas/pizzas.interfaces';
 import { pizzasInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
+import { IPizzasTable } from 'app/shared/states/pizzas/pizzas.interfaces';
 import * as PizzasActions from './pizzas.actions';
 
 export function pizzaReducer(

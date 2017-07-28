@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs/Observable';
+import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import {
   IPizzaBackendWithDetailsAndFk,
   IPizzaBackendWithDetailsAndFkUi,
 } from 'app/shared/states/pizzas/pizzas.interfaces';
-import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
+import { Observable } from 'rxjs/Observable';
 
 // your mock should extends either the abstract class (PizzasService)
 // or the implementation (PizzasServiceImpl)
