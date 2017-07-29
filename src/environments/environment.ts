@@ -35,6 +35,13 @@ export const environment = {
   // http://some-domain/your/app/routes (false)
   hashLocationStrategy: false,
 
+  // by default, if you use lazy loading, your (lazy loaded)
+  // modules will be loaded only when needed
+  // to avoid a small latency when the user needs it, you
+  // can preload them all and the browser will download
+  // them when idle so they're instantly available when needed
+  preloadAllLazyLoadedModules: false,
+
   // wether to display debug informations or not
   // TIP : Use console.debug, console.warn and console.error
   // console.log should be used only in dev and never commited
