@@ -17,6 +17,8 @@ But when you need a lot of external modules/libs and you've got to setup everyth
   - Effects  
   - StoreDevtools
 
+![Image of the starter after ng serve](https://user-images.githubusercontent.com/4950209/28744765-23ffcfce-7468-11e7-8ace-1af8127a6926.png)
+
 If you don't know angular-cli, please read the doc.
 
 I added one command to build the project as small as possible for production : `yarn run prod`.
