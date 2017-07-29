@@ -29,20 +29,9 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     @Inject(LANGUAGES) public languages,
     private store$: Store<IStore>,
     private media: ObservableMedia
-  ) {}
-
-  ngOnInit() {
-    this.ui$ = this.store$.select(state => state.ui);
-
-    this.language$ = this.store$.select(state => state.ui.language);
-
-    this.language$
-      .takeUntil(this.componentDestroyed$)
-      .do(language => {
-        this.language = language;
-      })
-      .subscribe();
-
+  ) {
+    // if we move this block into ngOnInit, it doesn't get fired the first time
+    // this is probably an issue with flexLayout
     this.media
       .asObservable()
       .takeUntil(this.componentDestroyed$)
@@ -57,6 +46,19 @@ export class FeaturesComponent implements OnInit, OnDestroy {
           this.openSidenav();
           this.sidenavType = 'side';
         }
+      })
+      .subscribe();
+  }
+
+  ngOnInit() {
+    this.ui$ = this.store$.select(state => state.ui);
+
+    this.language$ = this.store$.select(state => state.ui.language);
+
+    this.language$
+      .takeUntil(this.componentDestroyed$)
+      .do(language => {
+        this.language = language;
       })
       .subscribe();
   }
