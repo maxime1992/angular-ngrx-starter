@@ -13,8 +13,8 @@
     </md-select>
   </md-toolbar>
 
-  <md-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()">
-    <md-sidenav [opened]="(ui$ | async).isSidenavVisible" mode="side">
+  <md-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()" (backdropClick)="toggleSidenav()">
+    <md-sidenav [mode]="sidenavType" [opened]="(ui$ | async).isSidenavVisible" disableClose="true">
       {{ 'LEFT_SIDENAV_CONTENT' | translate }}
     </md-sidenav>
 

@@ -1,4 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -21,9 +22,13 @@ export class FeaturesComponent implements OnInit, OnDestroy {
   public language$: Observable<string>;
   public language: string;
 
+  public isSidenavOpened: boolean;
+  public sidenavType: 'over' | 'side';
+
   constructor(
     @Inject(LANGUAGES) public languages,
-    private store$: Store<IStore>
+    private store$: Store<IStore>,
+    private media: ObservableMedia
   ) {}
 
   ngOnInit() {
@@ -35,6 +40,23 @@ export class FeaturesComponent implements OnInit, OnDestroy {
       .takeUntil(this.componentDestroyed$)
       .do(language => {
         this.language = language;
+      })
+      .subscribe();
+
+    this.media
+      .asObservable()
+      .takeUntil(this.componentDestroyed$)
+      .map((change: MediaChange) => change.mqAlias as 'xs' | 'sm' | 'md' | 'lg')
+      .distinctUntilChanged()
+      .do(size => {
+        if (size === 'xs' || size === 'sm') {
+          this.closeSidenav();
+          this.sidenavType = 'over';
+        } else {
+          this.isSidenavOpened = true;
+          this.openSidenav();
+          this.sidenavType = 'side';
+        }
       })
       .subscribe();
   }
@@ -58,5 +80,13 @@ export class FeaturesComponent implements OnInit, OnDestroy {
 
   setLanguage(language: string) {
     this.store$.dispatch(new UiActions.SetLanguage({ language }));
+  }
+
+  isSmallScreen() {
+    if (this.media.isActive('xs') || this.media.isActive('sm')) {
+      return true;
+    }
+
+    return false;
   }
 }
