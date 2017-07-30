@@ -12,8 +12,9 @@ import { TranslateLoader, TranslateModule } from 'ng2-translate';
 
 // import RxJs needed operators only once
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
+import { environment } from 'environments/environment';
 import { createTranslateLoader } from '../shared/helpers/aot.helper';
-import { getRootReducer } from './../shared/states/root.reducer';
+import { metaReducers, reducers } from './../shared/states/root.reducer';
 import { LANGUAGES } from './injection-tokens';
 import './rxjs-operators';
 
@@ -23,22 +24,27 @@ import './rxjs-operators';
  */
 @NgModule({
   imports: [
+    // --------------------------------------------------------------------
     // START : Do not add your libs here
     BrowserAnimationsModule,
     HttpModule,
-    // TODO : Keep an eye on ngrx V3 to have lazy loaded reducers
-    // https://github.com/ngrx/store/pull/269
-    StoreModule.provideStore(getRootReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: createTranslateLoader,
       deps: [Http],
     }),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    // it'd be nice to have the possibility to activate redux devtools
+    // even if we're in prod but only with the extension
+    // since ngrx v4, no idea how to do that
+    !environment.production
+      ? StoreDevtoolsModule.instrument({ maxAge: 50 })
+      : [],
     // END : Do not add your libs here
+    // --------------------------------------------------------------------
 
-    // pass every effect here, one per line
-    // EffectsModule.runAfterBootstrap(YOUR_EFFECT_GOES_HERE),
+    // pass every effects here
+    // EffectsModule.forRoot([YOUR_EFFECTS_GOES_HERE]);
   ],
   providers: [
     {
