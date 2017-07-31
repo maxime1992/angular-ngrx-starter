@@ -13,6 +13,7 @@ module.exports = function (config) {
       require('@angular/cli/plugins/karma')
     ],
     client:{
+      captureConsole: true,
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
