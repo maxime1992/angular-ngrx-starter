@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "",
     "types": [
+      "jasmine",
       "node"
     ]
   }
