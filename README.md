@@ -31,6 +31,9 @@ Don't forget to install and take a look to [Redux DevTools](https://chrome.googl
 ## Note on service-worker
 The starter is pre-configured to generate a service-worker (thanks to angular-cli) and the only thing you need to do if you want your app to work offline, is to set `serviceWorker` to `true` in `.angular-cli.json`.
 
+## Note on unit testing
+The starter is pre-configured to use Chromium in headless mode. If you want to change that behavior, you can simply pass the browser of your choice in `karma.conf.js`, property `browsers`.
+
 <hr>
 
 # Lint, format and IDE setup
