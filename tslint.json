@@ -19,6 +19,6 @@
     "ban": [true, ["fit"], ["fdescribe"], ["xit"], ["xdescribe"]],
     "banana-in-box": true,
     "templates-no-negated-async": true,
-    "ordered-imports": [true]
+    "ordered-imports": true
   }
 }

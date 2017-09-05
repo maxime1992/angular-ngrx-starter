@@ -14,6 +14,15 @@
     "lib": [
       "es2016",
       "dom"
+    ],
+    "plugins": [
+      {
+          "name": "tslint-language-service",
+          // on Windows, this might trigger issues and should be removed
+          // see the notice here: https://github.com/angelozerr/tslint-language-service#tslint-language-service
+          // and the issue here: https://github.com/Microsoft/TypeScript/issues/15344
+          "disableNoUnusedVariableRule": false
+      }
     ]
   }
 }
