@@ -11,7 +11,7 @@
     "lint:check": "ng lint --type-check",
     "lint:fix": "yarn-or-npm run lint:check -- --fix",
     "check": "yarn-or-npm run lint:check && yarn-or-npm run prettier:check",
-    "check:fix": "yarn-or-npm run lint:fix && yarn-or-npm run prettier:fix",
+    "check:fix": "yarn-or-npm run lint:fix; yarn-or-npm run prettier:fix",
     "prettier:base": "yarn-or-npm run prettier -- --single-quote --trailing-comma es5",
     "prettier:base-files": "yarn-or-npm run prettier:base -- \"./{e2e,src}/**/*.{scss,ts}\"",
     "prettier:fix": "yarn-or-npm run prettier:base-files -- --write",
