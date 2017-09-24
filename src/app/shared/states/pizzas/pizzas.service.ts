@@ -1,12 +1,13 @@
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
 import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import {
   IPizzaBackendWithDetailsAndFk,
   IPizzaBackendWithDetailsAndFkUi,
 } from 'app/shared/states/pizzas/pizzas.interfaces';
 import { environment } from 'environments/environment';
-import { Observable } from 'rxjs/Observable';
 
 // when creating a service, you should use an abstract class to describe your methods
 // this way you'll have the possibility to :

@@ -1,9 +1,10 @@
 import { Response, ResponseOptions } from '@angular/http';
-import { environment } from 'environments/environment';
 import { Observable } from 'rxjs/Observable';
 
+import { environment } from 'environments/environment';
+
 /**
- * simulate the behaviour of Angular's Http module:
+ * this simulates the behaviour of Angular's http module:
  * if the status code is not a 2XX, it will return a failing Observable
  */
 export function response(status: number): Observable<Response> {
@@ -11,7 +12,7 @@ export function response(status: number): Observable<Response> {
 }
 
 /**
- * simulate the behaviour of Angular's Http module:
+ * this simulates the behaviour of Angular's http module:
  * if the status code is not a 2XX, it will return a failing Observable
  */
 export function responseBody(

@@ -1,15 +1,16 @@
+import { Observable } from 'rxjs/Observable';
+
 import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import {
   IPizzaBackendWithDetailsAndFk,
   IPizzaBackendWithDetailsAndFkUi,
 } from 'app/shared/states/pizzas/pizzas.interfaces';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
-import { Observable } from 'rxjs/Observable';
 
 // your mock should extends either the abstract class (PizzasService)
 // or the implementation (PizzasServiceImpl)
 // in most cases, you'll implement the abstract class but sometimes,
-// you might to override only some methods
+// you might want to override only some methods
 export class PizzasServiceMock extends PizzasService {
   constructor() {
     super();

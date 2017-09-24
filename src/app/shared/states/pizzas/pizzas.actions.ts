@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import { IPizzaBackendWithDetailsAndFkUi } from './pizzas.interfaces';
+
+import { IPizzaBackendWithDetailsAndFkUi } from 'app/shared/states/pizzas/pizzas.interfaces';
 
 // an issue has been opened for that : https://github.com/ngrx/example-app/issues/151
 // and we might have to wait Typescript 2.4 to use it this way

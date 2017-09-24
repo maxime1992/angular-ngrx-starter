@@ -11,12 +11,13 @@ import { TranslateLoader, TranslateModule } from 'ng2-translate';
 // import 'hammerjs';
 
 // import RxJs needed operators only once
+import 'app/core/rxjs-operators';
+
+import { LANGUAGES } from 'app/core/injection-tokens';
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
+import { createTranslateLoader } from 'app/shared/helpers/aot.helper';
+import { metaReducers, reducers } from 'app/shared/states/root.reducer';
 import { environment } from 'environments/environment';
-import { createTranslateLoader } from '../shared/helpers/aot.helper';
-import { metaReducers, reducers } from './../shared/states/root.reducer';
-import { LANGUAGES } from './injection-tokens';
-import './rxjs-operators';
 
 /**
  * this module will be imported only once, in AppModule and shouldn't be imported from anywhere else
@@ -37,6 +38,7 @@ import './rxjs-operators';
     // it'd be nice to have the possibility to activate redux devtools
     // even if we're in prod but only with the extension
     // since ngrx v4, no idea how to do that
+    // https://github.com/ngrx/platform/issues/374
     !environment.production
       ? StoreDevtoolsModule.instrument({ maxAge: 50 })
       : [],
