@@ -6,8 +6,10 @@
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
+    "test:ci": "yarn-or-npm run test -- --single-run --progress=false",
     "e2e": "ng e2e",
-    "build:prod": "ng build --prod --e=prod --no-sourcemap --build-optimizer && gulp compress",
+    "e2e:ci": "yarn-or-npm ng e2e -- --prod --progress=false",
+    "build:prod": "ng build --prod --e=prod --no-sourcemap --build-optimizer",
     "lint:check": "ng lint --type-check",
     "lint:fix": "yarn-or-npm run lint:check -- --fix",
     "check": "yarn-or-npm run lint:check && yarn-or-npm run prettier:check",
@@ -17,7 +19,8 @@
     "prettier:fix": "yarn-or-npm run prettier:base-files -- --write",
     "prettier:check": "yarn-or-npm run prettier:base-files -- -l",
     "precommit": "lint-staged",
-    "prepush": "yarn-or-npm run lint:check"
+    "prepush": "yarn-or-npm run lint:check",
+    "postbuild": "gulp compress"
   },
   "lint-staged": {
     "linters": {

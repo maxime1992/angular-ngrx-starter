@@ -1,0 +1,45 @@
+# -------------------------
+# this script allows you to
+# -------------------------
+# - test your code (unit + e2e)
+# - deploy your final build on GH pages
+
+# -----------------------------------------
+# in order to use CI and CD on your project
+# -----------------------------------------
+# - change Github username and repo in `script`
+# - go to https://travis-ci.org/YOUR-GITHUB-USERNAME/YOUR-GITHUB-REPO/settings
+# - activate travis for that repo
+# - define a GITHUB_TOKEN within the `Environment Variables`
+# - get that token from your Github account: https://github.com/settings/tokens
+# - `Generate new token`, give any name you want and select `public_repo`
+
+sudo: false
+
+language: node_js
+node_js: 8
+
+cache: yarn
+
+install:
+  - yarn install --frozen-lockfile --non-interactive
+  - yarn global add http-server
+
+script:
+  - yarn run check
+  - yarn run test:ci
+  - yarn run build:prod -- --progress=false --base-href "https://maxime1992.github.io/angular-ngrx-starter/"
+  - sed -i 's/<base href="https:\/\/maxime1992.github.io\/angular-ngrx-starter\/">/<base href="\/">/g' dist/index.html
+  - nohup http-server dist &
+  - sleep 5
+  - yarn run ng -- e2e:ci --serve=false -p 8080
+  - sed -i 's/<base href="\/">/<base href="https:\/\/maxime1992.github.io\/angular-ngrx-starter\/">/g' dist/index.html
+  - yarn run postbuild
+
+deploy:
+  skip_cleanup: true
+  provider: pages
+  github_token: $GITHUB_TOKEN
+  local_dir: dist
+  on:
+    branch: master
