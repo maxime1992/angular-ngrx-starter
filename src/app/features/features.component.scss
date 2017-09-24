@@ -1,3 +1,9 @@
-md-sidenav {
+mat-toolbar {
+  mat-select {
+    padding-top: 0;
+  }
+}
+
+mat-sidenav {
   width: 250px;
 }

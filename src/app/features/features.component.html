@@ -1,27 +1,27 @@
 <div fxLayout="column" fxFill>
-  <md-toolbar color="primary">
+  <mat-toolbar color="primary">
     <img class="logo-toolbar" src="assets/img/angular-logo.png">
 
-    <button md-icon-button (click)="toggleSidenav()">
-      <md-icon>menu</md-icon>
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
     </button>
 
     <div fxFlex></div>
 
-    <md-select [(ngModel)]="language" (change)="setLanguage(language)">
-      <md-option *ngFor="let l of languages" [value]="l">{{ l }}</md-option>
-    </md-select>
-  </md-toolbar>
+    <mat-select [(ngModel)]="language" (change)="setLanguage(language)">
+      <mat-option *ngFor="let l of languages" [value]="l">{{ l }}</mat-option>
+    </mat-select>
+  </mat-toolbar>
 
-  <md-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()" (backdropClick)="toggleSidenav()">
-    <md-sidenav [mode]="sidenavType" [opened]="(ui$ | async).isSidenavVisible" disableClose="true">
+  <mat-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()" (backdropClick)="toggleSidenav()">
+    <mat-sidenav [mode]="sidenavType" [opened]="(ui$ | async).isSidenavVisible" disableClose="true">
       {{ 'LEFT_SIDENAV_CONTENT' | translate }}
-    </md-sidenav>
+    </mat-sidenav>
 
     <!-- you'll probably want to add a router-outlet here -->
     <!-- to display your content accordingly to your routes -->
     <p>{{ 'TXT_CONTENT' | translate }}</p>
 
-    <button md-button (click)="openSidenav()">{{ 'OPEN_LEFT_SIDENAV' | translate }}</button>
-  </md-sidenav-container>
+    <button mat-button (click)="openSidenav()">{{ 'OPEN_LEFT_SIDENAV' | translate }}</button>
+  </mat-sidenav-container>
 </div>
