@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome',
     'chromeOptions': {
       'useAutomationExtension': false,
-      'args': ['--no-sandbox', '--headless', '--disable-gpu']
+      'args': ['--no-sandbox', '--headless', '--disable-gpu', '--lang=EN']
     }
   },
   directConnect: true,
