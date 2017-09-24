@@ -1,6 +1,6 @@
-import * as UiActions from './ui.actions';
-import { uiInitialState } from './ui.initial-state';
-import { IUi } from './ui.interface';
+import * as UiActions from 'app/shared/states/ui/ui.actions';
+import { uiInitialState } from 'app/shared/states/ui/ui.initial-state';
+import { IUi } from 'app/shared/states/ui/ui.interface';
 
 export function uiReducer(
   ui: IUi = uiInitialState(),

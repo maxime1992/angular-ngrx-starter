@@ -6,11 +6,11 @@ import {
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from 'app/app-routing.module';
+import { AppComponent } from 'app/app.component';
+import { CoreModule } from 'app/core/core.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { environment } from 'environments/environment';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 
 /**
  * this module should be kept as small as possible and shouldn't be modified

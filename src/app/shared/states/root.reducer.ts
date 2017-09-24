@@ -2,9 +2,9 @@ import { ActionReducerMap } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { enableBatching } from 'redux-batched-actions';
 
-import { IStore } from '../interfaces/store.interface';
-import { environment } from './../../../environments/environment';
-import { uiReducer } from './ui/ui.reducer';
+import { IStore } from 'app/shared/interfaces/store.interface';
+import { uiReducer } from 'app/shared/states/ui/ui.reducer';
+import { environment } from 'environments/environment';
 
 // ------------------------------------------------------------------------------
 

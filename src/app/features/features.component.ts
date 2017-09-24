@@ -4,10 +4,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
+import { LANGUAGES } from 'app/core/injection-tokens';
+import { IStore } from 'app/shared/interfaces/store.interface';
+import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { IUi } from 'app/shared/states/ui/ui.interface';
-import { LANGUAGES } from '../core/injection-tokens';
-import { IStore } from '../shared/interfaces/store.interface';
-import * as UiActions from './../shared/states/ui/ui.actions';
 
 @Component({
   selector: 'app-features',

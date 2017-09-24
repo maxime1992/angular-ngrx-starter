@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import * as PizzasActions from 'app/shared/states/pizzas/pizzas.actions';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
 import { environment } from 'environments/environment';
-import { Observable } from 'rxjs/Observable';
-import * as PizzasActions from './pizzas.actions';
 
 @Injectable()
 export class PizzasEffects {

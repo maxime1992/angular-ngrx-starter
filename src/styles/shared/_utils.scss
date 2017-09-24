@@ -97,6 +97,6 @@ $directions: '', '-left', '-right', '-top', '-bottom';
 
 @each $colorName, $colorHexa in $color-palette {
   @for $indexColor from 1 through $color-declination {
-    @include generate-colors($colorName, $colorHexa, $indexColor, "");
+    @include generate-colors($colorName, $colorHexa, $indexColor, '');
   }
 }
