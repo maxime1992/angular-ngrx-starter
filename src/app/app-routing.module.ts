@@ -7,26 +7,21 @@ import {
 } from '@angular/router';
 
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
-import { FeaturesModule } from 'app/features/features.module';
 import { environment } from 'environments/environment';
 
-// if you want to lazy load the features module,
-// 1 - remove the `import { FeaturesModule } from ...`;
-// 2 - remove the loadFeaturesModule function
+// if you don't want to lazy load the features module,
+// simply put the loadFeaturesModule as value of loadChildren
+// import { FeaturesModule } from './features/features.module';
 
-// we cannot use shorthand like that:
-// loadChildren: () => FeaturesModule
-// to be AOT compliant, we need to create
-// a named function and export the module
-export function loadFeaturesModule() {
-  return FeaturesModule;
-}
+// export function loadFeaturesModule() {
+//   return FeaturesModule;
+// }
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [RuntimeEnvironmentService],
-    loadChildren: loadFeaturesModule,
+    loadChildren: 'app/features/features.module#FeaturesModule',
   },
 ];
 
