@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
-  let component: AppComponent;
 
   beforeEach(
     async(() => {
@@ -34,7 +33,6 @@ describe('AppComponent', () => {
   beforeEach(
     async(() => {
       fixture = TestBed.createComponent(AppComponent);
-      component = fixture.componentInstance;
     })
   );
 

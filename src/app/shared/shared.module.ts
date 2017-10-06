@@ -4,7 +4,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { PrettyJsonModule } from 'angular2-prettyjson';
 import { TranslateModule } from 'ng2-translate';
 
 // we now have to import every sub modules of material we want to use
@@ -52,7 +51,6 @@ export const modules = [
   FlexLayoutModule,
   StoreModule,
   TranslateModule,
-  PrettyJsonModule,
   ...MaterialModules,
 ];
 

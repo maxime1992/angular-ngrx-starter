@@ -53,7 +53,7 @@ import { environment } from 'environments/environment';
     {
       provide: LANGUAGES,
       // order matters : The first one will be used by default
-      // to be accuracte, it will depend if you've set environment.useBrowserLanguageAsDefault to true or not
+      // to be accurate, it will depend if you've set environment.useBrowserLanguageAsDefault to true or not
       // if it's set to true, it'll first try to use the browser language and if not available, fallback to the
       // firt language of the following array
       useValue: ['en', 'fr'],

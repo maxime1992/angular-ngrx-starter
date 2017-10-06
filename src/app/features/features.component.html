@@ -8,12 +8,14 @@
 
     <div fxFlex></div>
 
-    <mat-select [(ngModel)]="language" (change)="setLanguage(language)">
-      <mat-option *ngFor="let l of languages" [value]="l">{{ l }}</mat-option>
-    </mat-select>
+    <mat-form-field>
+      <mat-select [(ngModel)]="language" (change)="setLanguage(language)">
+        <mat-option *ngFor="let l of languages" [value]="l">{{ l }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-toolbar>
 
-  <mat-sidenav-container fxFlex (backdrop-clicked)="closeSidenav()" (backdropClick)="toggleSidenav()">
+  <mat-sidenav-container fxFlex (backdropClick)="closeSidenav()">
     <mat-sidenav [mode]="sidenavType" [opened]="(ui$ | async).isSidenavVisible" disableClose="true">
       {{ 'LEFT_SIDENAV_CONTENT' | translate }}
     </mat-sidenav>
