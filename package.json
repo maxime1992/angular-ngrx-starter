@@ -31,19 +31,19 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "4.4.3",
+    "@angular/animations": "5.0.0-rc.1",
     "@angular/cdk": "2.0.0-beta.11",
-    "@angular/common": "4.4.3",
-    "@angular/compiler": "4.4.3",
-    "@angular/core": "4.4.3",
+    "@angular/common": "5.0.0-rc.1",
+    "@angular/compiler": "5.0.0-rc.1",
+    "@angular/core": "5.0.0-rc.1",
     "@angular/flex-layout": "2.0.0-beta.9",
-    "@angular/forms": "4.4.3",
-    "@angular/http": "4.4.3",
+    "@angular/forms": "5.0.0-rc.1",
+    "@angular/http": "5.0.0-rc.1",
     "@angular/material": "2.0.0-beta.11",
-    "@angular/platform-browser": "4.4.3",
-    "@angular/platform-browser-dynamic": "4.4.3",
-    "@angular/router": "4.4.3",
-    "@angular/service-worker": "1.0.0-beta.16",
+    "@angular/platform-browser": "5.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "5.0.0-rc.1",
+    "@angular/router": "5.0.0-rc.1",
+    "@angular/service-worker": "5.0.0-rc.1 ",
     "@ngrx/core": "1.2.0",
     "@ngrx/effects": "4.0.5",
     "@ngrx/store": "4.0.3",
@@ -63,8 +63,8 @@
   },
   "devDependencies": {
     "@angular/cli": "1.4.3",
-    "@angular/compiler-cli": "4.4.3",
-    "@angular/language-service": "4.4.3",
+    "@angular/compiler-cli": "5.0.0-rc.1",
+    "@angular/language-service": "5.0.0-rc.1",
     "@types/jasmine": "2.6.0",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "8.0.30",
@@ -88,5 +88,9 @@
     "tslint": "5.7.0",
     "typescript": "2.5.2",
     "yarn-or-npm": "2.0.4"
+  },
+  "resolutions": {
+    "@angular/core": "5.0.0-rc.1",
+    "typescript": "2.5.2"
   }
 }
