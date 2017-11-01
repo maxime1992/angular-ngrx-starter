@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import {
@@ -25,7 +26,9 @@ export class PizzasServiceImpl extends PizzasService {
   fetchPizza(id: string): Observable<IPizzaBackendWithDetailsAndFkUi> {
     return this.http
       .get(`${environment.urlBackend}/pizzas/${id}`)
-      .map((res: Response) => res.json() as IPizzaBackendWithDetailsAndFk)
-      .map(data => pizzaInitialState(data));
+      .pipe(
+        map((res: Response) => res.json() as IPizzaBackendWithDetailsAndFk),
+        map(data => pizzaInitialState(data))
+      );
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
@@ -44,9 +45,11 @@ export class AppComponent implements OnInit, OnDestroy {
     // change it in translate provider
     this.store$
       .select(state => state.ui.language)
-      .takeUntil(this.onDestroy$)
-      .filter(language => !!language)
-      .do(language => this.translate.use(language))
+      .pipe(
+        takeUntil(this.onDestroy$),
+        filter(language => !!language),
+        tap(language => this.translate.use(language))
+      )
       .subscribe();
   }
 

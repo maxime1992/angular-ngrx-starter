@@ -4,6 +4,8 @@ import { CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from 'environments/environment';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, mapTo, tap } from 'rxjs/operators';
 
 @Injectable()
 export class RuntimeEnvironmentService implements CanActivate {
@@ -19,14 +21,18 @@ export class RuntimeEnvironmentService implements CanActivate {
       // by default, load runtime-environment
       return this.http
         .get('assets/runtime-environments/runtime-environment.json')
-        .map(res => res.json())
-        .do(env => (this.environment = env))
-        .mapTo(true)
-        .catch(_ => {
-          console.error('Error while trying to fetch the runtime environment');
+        .pipe(
+          map(res => res.json()),
+          tap(env => (this.environment = env)),
+          mapTo(true),
+          catchError(_ => {
+            console.error(
+              'Error while trying to fetch the runtime environment'
+            );
 
-          return Observable.of(false);
-        });
+            return of(false);
+          })
+        );
     }
 
     // if environment.loadRuntimeEnvironment is set to false, then we just want

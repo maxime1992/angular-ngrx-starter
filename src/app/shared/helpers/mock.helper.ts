@@ -1,5 +1,8 @@
 import { Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
+import { delay, dematerialize, materialize } from 'rxjs/operators';
 
 import { environment } from 'environments/environment';
 
@@ -22,11 +25,12 @@ export function responseBody(
   const res = new Response(new ResponseOptions({ status, body }));
 
   if (status >= 200 && status < 300) {
-    return Observable.of(res).delay(environment.httpDelay);
+    return of(res).pipe(delay(environment.httpDelay));
   } else {
-    return Observable.throw(res)
-      .materialize()
-      .delay(environment.httpDelay)
-      .dematerialize();
+    return _throw(res).pipe(
+      materialize(),
+      delay(environment.httpDelay),
+      dematerialize()
+    );
   }
 }
