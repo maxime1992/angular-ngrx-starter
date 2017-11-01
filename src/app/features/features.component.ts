@@ -15,7 +15,7 @@ import { IUi } from 'app/shared/states/ui/ui.interface';
   styleUrls: ['./features.component.scss'],
 })
 export class FeaturesComponent implements OnInit, OnDestroy {
-  private componentDestroyed$ = new Subject<void>();
+  private onDestroy$ = new Subject<void>();
 
   public ui$: Observable<IUi>;
 
@@ -34,7 +34,7 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     // this is probably an issue with flexLayout
     this.media
       .asObservable()
-      .takeUntil(this.componentDestroyed$)
+      .takeUntil(this.onDestroy$)
       .map((change: MediaChange) => change.mqAlias as 'xs' | 'sm' | 'md' | 'lg')
       .distinctUntilChanged()
       .do(size => {
@@ -56,16 +56,14 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     this.language$ = this.store$.select(state => state.ui.language);
 
     this.language$
-      .takeUntil(this.componentDestroyed$)
-      .do(language => {
-        this.language = language;
-      })
+      .takeUntil(this.onDestroy$)
+      .do(language => (this.language = language))
       .subscribe();
   }
 
   ngOnDestroy() {
-    this.componentDestroyed$.next();
-    this.componentDestroyed$.complete();
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 
   openSidenav() {
@@ -82,13 +80,5 @@ export class FeaturesComponent implements OnInit, OnDestroy {
 
   setLanguage(language: string) {
     this.store$.dispatch(new UiActions.SetLanguage({ language }));
-  }
-
-  isSmallScreen() {
-    if (this.media.isActive('xs') || this.media.isActive('sm')) {
-      return true;
-    }
-
-    return false;
   }
 }
