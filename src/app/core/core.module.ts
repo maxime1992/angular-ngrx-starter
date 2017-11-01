@@ -11,9 +11,6 @@ import { TranslateLoader, TranslateModule } from 'ng2-translate';
 // In order to get the full feature-set of these components, HammerJS must be loaded into the application
 // import 'hammerjs';
 
-// import RxJs needed operators only once
-import 'app/core/rxjs-operators';
-
 import { LANGUAGES } from 'app/core/injection-tokens';
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
 import { createTranslateLoader } from 'app/shared/helpers/aot.helper';

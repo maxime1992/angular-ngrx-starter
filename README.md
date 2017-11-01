@@ -119,9 +119,7 @@ Everything you only want to import in your app only once. (It'll mainly be modul
 
 We'll also add our `providers` here for simplicity.  
 
-Into the `core` folder, you'll also find:  
-- `injection-tokens.ts`: You can create your tokens here  
-- `rxjs-operators.ts`: Add every RxJs operators you need in your app
+Into the `core` folder, you'll also find the `injection-tokens.ts`. It's where you can create your tokens.  
 
 ## FeaturesModule
 It's basically the folder where you'll put (nearly) all your code. With angular, your app will be splitted in (a lot of) components. I like to create a module (folder) per feature and if it's not something I'll re-use up to the tree of components, I nest it. For example, with an email application we could have :

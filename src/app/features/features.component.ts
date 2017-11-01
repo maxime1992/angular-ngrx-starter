@@ -8,6 +8,7 @@ import { LANGUAGES } from 'app/core/injection-tokens';
 import { IStore } from 'app/shared/interfaces/store.interface';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { IUi } from 'app/shared/states/ui/ui.interface';
+import { distinctUntilChanged, map, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-features',
@@ -34,19 +35,23 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     // this is probably an issue with flexLayout
     this.media
       .asObservable()
-      .takeUntil(this.onDestroy$)
-      .map((change: MediaChange) => change.mqAlias as 'xs' | 'sm' | 'md' | 'lg')
-      .distinctUntilChanged()
-      .do(size => {
-        if (size === 'xs' || size === 'sm') {
-          this.closeSidenav();
-          this.sidenavType = 'over';
-        } else {
-          this.isSidenavOpened = true;
-          this.openSidenav();
-          this.sidenavType = 'side';
-        }
-      })
+      .pipe(
+        takeUntil(this.onDestroy$),
+        map(
+          (change: MediaChange) => change.mqAlias as 'xs' | 'sm' | 'md' | 'lg'
+        ),
+        distinctUntilChanged(),
+        tap(size => {
+          if (size === 'xs' || size === 'sm') {
+            this.closeSidenav();
+            this.sidenavType = 'over';
+          } else {
+            this.isSidenavOpened = true;
+            this.openSidenav();
+            this.sidenavType = 'side';
+          }
+        })
+      )
       .subscribe();
   }
 
@@ -56,8 +61,10 @@ export class FeaturesComponent implements OnInit, OnDestroy {
     this.language$ = this.store$.select(state => state.ui.language);
 
     this.language$
-      .takeUntil(this.onDestroy$)
-      .do(language => (this.language = language))
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap(language => (this.language = language))
+      )
       .subscribe();
   }
 

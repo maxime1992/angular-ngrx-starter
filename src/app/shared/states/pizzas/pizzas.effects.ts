@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as PizzasActions from 'app/shared/states/pizzas/pizzas.actions';
 import { PizzasService } from 'app/shared/states/pizzas/pizzas.service';
@@ -21,24 +23,26 @@ export class PizzasEffects {
   @Effect({ dispatch: true })
   fetchPizzaDetails$: Observable<Action> = this.actions$
     .ofType(PizzasActions.FETCH_PIZZA_DETAILS)
-    .switchMap((action: PizzasActions.FetchPizzaDetails) =>
-      this.pizzasService
-        .fetchPizza(action.payload.id)
-        .map(pizza => new PizzasActions.FetchPizzaDetailsSuccess(pizza))
-        .catch(err => {
-          if (environment.debug) {
-            console.group();
-            console.warn('Error caught in pizzas.effects:');
-            console.error(err);
-            console.groupEnd();
-          }
+    .pipe(
+      switchMap((action: PizzasActions.FetchPizzaDetails) =>
+        this.pizzasService.fetchPizza(action.payload.id).pipe(
+          map(pizza => new PizzasActions.FetchPizzaDetailsSuccess(pizza)),
+          catchError(err => {
+            if (environment.debug) {
+              console.group();
+              console.warn('Error caught in pizzas.effects:');
+              console.error(err);
+              console.groupEnd();
+            }
 
-          return Observable.of(
-            new PizzasActions.FetchPizzaDetailsFailed({
-              id: action.payload.id,
-              error: err,
-            })
-          );
-        })
+            return of(
+              new PizzasActions.FetchPizzaDetailsFailed({
+                id: action.payload.id,
+                error: err,
+              })
+            );
+          })
+        )
+      )
     );
 }

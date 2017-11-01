@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { pizzaInitialState } from 'app/shared/states/pizzas/pizzas.initial-state';
 import {
@@ -24,6 +25,6 @@ export class PizzasServiceMock extends PizzasService {
       ingredientsIds: ['ingredientId1', 'ingredientId2', 'ingredientId3'],
     };
 
-    return Observable.of(pizzaInitialState(pizza));
+    return of(pizzaInitialState(pizza));
   }
 }
