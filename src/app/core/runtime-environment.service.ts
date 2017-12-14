@@ -1,18 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, mapTo, tap } from 'rxjs/operators';
 
 import { environment } from 'environments/environment';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, mapTo, tap } from 'rxjs/operators';
 
 @Injectable()
 export class RuntimeEnvironmentService implements CanActivate {
   // you should define the environment type accordingly to your data
   public environment: any = {};
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
     if (environment.loadRuntimeEnvironment) {
@@ -22,7 +22,7 @@ export class RuntimeEnvironmentService implements CanActivate {
       return this.http
         .get('assets/runtime-environments/runtime-environment.json')
         .pipe(
-          map(res => res.json()),
+          // TODO: add type
           tap(env => (this.environment = env)),
           mapTo(true),
           catchError(_ => {

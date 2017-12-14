@@ -42,8 +42,6 @@ Before we start digging into the architecture of this project, you have to know 
 
 Also, a pre-commit hook has been setup and before you commit something, it'll check if all the file are well formatted. If you want to disable that behavior, remove `.git/hooks/pre-commit` and also the `precommit` key in `package.json`.
 
-Last thing about *Prettier*: If you decide to keep the pre-commit hook and if your `package.json` is not at the root of your project (for example if you have a frontend and a backend folder and you want to use prettier in frontend). You'll have to add `"gitDir": "../"` within the `lint-staged` property of `package.json` (at the same level of the `linters` key).
-
 ## Visual Studio Code
 Of course, you can use your favorite editor/IDE. If you decide to use VSC, you might want to install [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template). It'll give you autocompletion and type checking into your HTML templates.
 
@@ -103,7 +101,7 @@ If you don't want that feature and keep your main route as fast as possible with
 
 # assets
 ## /src/assets
-Folder where you can put all your static assets like pictures. There's also a `i18n` folder with one file per language. Indeed, this template includes `ng2-translate` so you can easily have multi language support.  
+Folder where you can put all your static assets like pictures. There's also a `i18n` folder with one file per language. Indeed, this template includes `@ngx-translate` so you can easily have multi language support.  
 
 If you add a language file, to make it available in the UI you'll have to open `/src/app/core/core.module.ts` and add it to the `providers` list.
 

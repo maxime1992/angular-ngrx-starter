@@ -6,8 +6,9 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { map } from 'rxjs/operators';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
@@ -94,7 +95,7 @@ export class StoreMockService extends BehaviorSubject<any> {
   dispatch(action: any) {}
 
   select(fn) {
-    return this.map(fn);
+    return this.pipe(map(fn));
   }
 
   updateStore(state) {

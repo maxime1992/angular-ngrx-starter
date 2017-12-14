@@ -1,10 +1,9 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { Http, HttpModule } from '@angular/http';
-import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateLoader, TranslateModule } from 'ng2-translate';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 // import hammerjs only if needed :
 // From https://material.angular.io/guide/getting-started#additional-setup-for-gestures
 // Some components (md-slide-toggle, md-slider, mdTooltip) rely on HammerJS for gestures
@@ -13,7 +12,7 @@ import { TranslateLoader, TranslateModule } from 'ng2-translate';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
 import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
-import { createTranslateLoader } from 'app/shared/helpers/aot.helper';
+import { httpLoaderFactory } from 'app/shared/helpers/aot.helper';
 import { metaReducers, reducers } from 'app/shared/states/root.reducer';
 import { environment } from 'environments/environment';
 
@@ -26,11 +25,13 @@ import { environment } from 'environments/environment';
     // --------------------------------------------------------------------
     // START : Do not add your libs here
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: createTranslateLoader,
-      deps: [Http],
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
     StoreModule.forRoot(reducers, { metaReducers }),
     // it'd be nice to have the possibility to activate redux devtools
@@ -55,7 +56,6 @@ import { environment } from 'environments/environment';
       // firt language of the following array
       useValue: ['en', 'fr'],
     },
-    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true },
     RuntimeEnvironmentService,
   ],
 })

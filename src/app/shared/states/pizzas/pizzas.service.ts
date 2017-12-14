@@ -1,5 +1,4 @@
-import { Http } from '@angular/http';
-import { Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 
@@ -19,16 +18,15 @@ export abstract class PizzasService {
 }
 
 export class PizzasServiceImpl extends PizzasService {
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     super();
   }
 
   fetchPizza(id: string): Observable<IPizzaBackendWithDetailsAndFkUi> {
     return this.http
-      .get(`${environment.urlBackend}/pizzas/${id}`)
-      .pipe(
-        map((res: Response) => res.json() as IPizzaBackendWithDetailsAndFk),
-        map(data => pizzaInitialState(data))
-      );
+      .get<IPizzaBackendWithDetailsAndFk>(
+        `${environment.urlBackend}/pizzas/${id}`
+      )
+      .pipe(map(data => pizzaInitialState(data)));
   }
 }
