@@ -6,26 +6,26 @@
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
-    "test:ci": "yarn-or-npm run test -- --single-run --progress=false",
+    "test:ci": "yarn run test --single-run --progress=false",
     "e2e": "ng e2e",
-    "e2e:ci": "yarn-or-npm ng e2e -- --prod --progress=false",
+    "e2e:ci": "yarn ng e2e --prod --progress=false",
     "build:prod": "ng build --prod --e=prod --no-sourcemap --build-optimizer",
     "lint:check": "ng lint --type-check",
-    "lint:fix": "yarn-or-npm run lint:check -- --fix",
-    "check": "yarn-or-npm run lint:check && yarn-or-npm run prettier:check",
-    "check:fix": "yarn-or-npm run lint:fix; yarn-or-npm run prettier:fix",
-    "prettier:base": "yarn-or-npm run prettier -- --single-quote --trailing-comma es5",
-    "prettier:base-files": "yarn-or-npm run prettier:base -- \"./{e2e,src}/**/*.{scss,ts}\"",
-    "prettier:fix": "yarn-or-npm run prettier:base-files -- --write",
-    "prettier:check": "yarn-or-npm run prettier:base-files -- -l",
+    "lint:fix": "yarn run lint:check --fix",
+    "check": "yarn run lint:check && yarn run prettier:check",
+    "check:fix": "yarn run lint:fix; yarn run prettier:fix",
+    "prettier:base": "yarn run prettier --single-quote --trailing-comma es5",
+    "prettier:base-files": "yarn run prettier:base \"./{e2e,src}/**/*.{scss,ts}\"",
+    "prettier:fix": "yarn run prettier:base-files --write",
+    "prettier:check": "yarn run prettier:base-files -l",
     "precommit": "lint-staged",
-    "prepush": "yarn-or-npm run lint:check",
+    "prepush": "yarn run lint:check",
     "postbuild": "gulp compress"
   },
   "lint-staged": {
     "linters": {
       "*.{ts,scss}": [
-        "yarn-or-npm run prettier:base -- -l"
+        "yarn run prettier:base -l"
       ]
     }
   },
@@ -86,8 +86,7 @@
     "protractor": "5.2.2",
     "ts-node": "4.1.0",
     "tslint": "5.8.0",
-    "typescript": "2.6.2",
-    "yarn-or-npm": "2.0.4"
+    "typescript": "2.6.2"
   },
   "resolutions": {
     "@angular/core": "5.1.2",
