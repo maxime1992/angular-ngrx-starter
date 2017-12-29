@@ -9,6 +9,8 @@
     "test:ci": "yarn run test --single-run --progress=false",
     "e2e": "ng e2e",
     "e2e:ci": "yarn ng e2e --prod --progress=false",
+    "cypress:open": "cypress open",
+    "cypress:ci": "cypress run",
     "build:prod": "ng build --prod --e=prod --no-sourcemap --build-optimizer",
     "lint:check": "ng lint --type-check",
     "lint:fix": "yarn run lint:check --fix",
@@ -65,10 +67,12 @@
     "@angular/cli": "1.6.3",
     "@angular/compiler-cli": "5.1.2",
     "@angular/language-service": "5.1.2",
+    "@bahmutov/add-typescript-to-cypress": "1.1.1",
     "@types/jasmine": "2.8.3",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "8.5.2",
     "codelyzer": "4.0.2",
+    "cypress": "1.4.1",
     "gulp": "3.9.1",
     "gulp-gzip": "1.4.0",
     "husky": "0.14.3",
@@ -86,7 +90,8 @@
     "protractor": "5.2.2",
     "ts-node": "4.1.0",
     "tslint": "5.8.0",
-    "typescript": "2.6.2"
+    "typescript": "2.6.2",
+    "wait-on": "2.0.2"
   },
   "resolutions": {
     "@angular/core": "5.1.2",
