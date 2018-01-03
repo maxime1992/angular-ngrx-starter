@@ -1,6 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -15,6 +17,8 @@ import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service'
 import { httpLoaderFactory } from 'app/shared/helpers/aot.helper';
 import { metaReducers, reducers } from 'app/shared/states/root.reducer';
 import { environment } from 'environments/environment';
+import { RouterEffects } from '../shared/states/router/router.effects';
+import  {CustomSerializer } from '../shared/states/router/router.selector';
 
 /**
  * this module will be imported only once, in AppModule and shouldn't be imported from anywhere else
@@ -34,6 +38,7 @@ import { environment } from 'environments/environment';
       },
     }),
     StoreModule.forRoot(reducers, { metaReducers }),
+    StoreRouterConnectingModule,
     // it'd be nice to have the possibility to activate redux devtools
     // even if we're in prod but only with the extension
     // since ngrx v4, no idea how to do that
@@ -45,7 +50,8 @@ import { environment } from 'environments/environment';
     // --------------------------------------------------------------------
 
     // pass every effects here
-    // EffectsModule.forRoot([YOUR_EFFECTS_GOES_HERE]);
+    // EffectsModule.forRoot([RouterEffects, YOUR_EFFECTS_GOES_HERE]);
+    EffectsModule.forRoot([RouterEffects])
   ],
   providers: [
     {
@@ -57,6 +63,7 @@ import { environment } from 'environments/environment';
       useValue: ['en', 'fr'],
     },
     RuntimeEnvironmentService,
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
   ],
 })
 export class CoreModule {}
