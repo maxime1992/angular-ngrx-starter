@@ -1,14 +1,15 @@
+import * as fromRouter from '@ngrx/router-store';
 import { ActionReducerMap } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
-import { enableBatching } from 'redux-batched-actions';
-
 import { IStore } from 'app/shared/interfaces/store.interface';
 import { uiReducer } from 'app/shared/states/ui/ui.reducer';
 import { environment } from 'environments/environment';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { enableBatching } from 'redux-batched-actions';
 
 // ------------------------------------------------------------------------------
 
 export const reducers: ActionReducerMap<IStore> = {
+	routerReducer: fromRouter.routerReducer,
   // pass your reducers here
   ui: uiReducer,
 };
