@@ -16,8 +16,7 @@
     "lint:fix": "yarn run lint:check --fix",
     "check": "yarn run lint:check && yarn run prettier:check",
     "check:fix": "yarn run lint:fix; yarn run prettier:fix",
-    "prettier:base": "yarn run prettier --single-quote --trailing-comma es5",
-    "prettier:base-files": "yarn run prettier:base \"./{e2e,src}/**/*.{scss,ts}\"",
+    "prettier:base-files": "yarn run prettier \"./{e2e,src}/**/*.{scss,ts}\"",
     "prettier:fix": "yarn run prettier:base-files --write",
     "prettier:check": "yarn run prettier:base-files -l",
     "precommit": "lint-staged",
@@ -27,7 +26,7 @@
   "lint-staged": {
     "linters": {
       "*.{ts,scss}": [
-        "yarn run prettier:base -l"
+        "yarn run prettier -l"
       ]
     }
   },
@@ -86,7 +85,7 @@
     "karma-jasmine-html-reporter": "0.2.2",
     "karma-scss-preprocessor": "3.0.0",
     "lint-staged": "6.0.0",
-    "prettier": "1.9.2",
+    "prettier": "1.10.2",
     "protractor": "5.2.2",
     "ts-node": "4.1.0",
     "tslint": "5.8.0",
