@@ -8,7 +8,6 @@ import {
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { map } from 'rxjs/operators';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
@@ -46,7 +45,6 @@ describe('AppComponent', () => {
         spyOn(translateService, 'setDefaultLang');
         spyOn(translateService, 'use');
         spyOn(store, 'dispatch');
-        spyOn(store, 'select').and.callThrough();
 
         // simulate that the browser is set to english by default
         translateService.browserLang = 'en';
@@ -63,7 +61,6 @@ describe('AppComponent', () => {
           new UiActions.SetLanguage({ language: 'en' })
         );
 
-        expect(store.select).toHaveBeenCalled();
         expect(translateService.use).toHaveBeenCalledWith('en');
       }
     )
@@ -93,10 +90,6 @@ export class StoreMockService extends BehaviorSubject<any> {
   }
 
   dispatch(action: any) {}
-
-  select(fn) {
-    return this.pipe(map(fn));
-  }
 
   updateStore(state) {
     this.next(state);

@@ -226,17 +226,21 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/core/-/core-1.2.0.tgz#882b46abafa2e0e6d887cb71a1b2c2fa3e6d0dc6"
 
-"@ngrx/effects@4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-4.1.1.tgz#cb758b8527964b258ea41951f59aa144e3ef9fae"
+"@ngrx/effects@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-5.1.0.tgz#cef84576b2d0333f19188aedfe156fd301bff70a"
 
-"@ngrx/store-devtools@4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-4.1.1.tgz#20745c39c7560fdc05fa4f22638442a7ec7dd676"
+"@ngrx/entity@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-5.1.0.tgz#27de53bd10c7f93c82d8aa1642357c65657e1459"
 
-"@ngrx/store@4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-4.1.1.tgz#680e34df2775e8852754ed777ffac95bd81b7de0"
+"@ngrx/store-devtools@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-5.1.0.tgz#7df8a6da652cc792000ad058ca4072a32e3629b1"
+
+"@ngrx/store@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-5.1.0.tgz#d957131e62041deede043524fd300db9fa835d68"
 
 "@ngtools/json-schema@1.2.0":
   version "1.2.0"

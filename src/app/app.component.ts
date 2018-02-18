@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { LANGUAGES } from 'app/core/injection-tokens';
 import { IStore } from 'app/shared/interfaces/store.interface';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
+import { getLanguage } from 'app/shared/states/ui/ui.selectors';
 import { environment } from 'environments/environment';
 
 @Component({
@@ -44,8 +45,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // when the language changes in store,
     // change it in translate provider
     this.store$
-      .select(state => state.ui.language)
       .pipe(
+        select(getLanguage),
         takeUntil(this.onDestroy$),
         filter(language => !!language),
         tap(language => this.translate.use(language))

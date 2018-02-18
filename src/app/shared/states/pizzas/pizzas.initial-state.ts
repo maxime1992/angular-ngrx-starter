@@ -3,6 +3,7 @@ import {
   IPizzaBackendWithDetailsAndFkUi,
   IPizzasTable,
 } from 'app/shared/states/pizzas/pizzas.interfaces';
+import { pizzasAdapter } from 'app/shared/states/pizzas/pizzas.reducer';
 
 /**
  * pass a pizza and return an pizza with its properties + missing ones
@@ -31,12 +32,9 @@ export function pizzaInitialState(
 /**
  * default state for IPizzasTable
  */
-export function pizzasInitialState(): IPizzasTable {
-  return {
-    isAdding: false,
-    isAddingError: '',
-
-    byId: {},
-    allIds: [],
-  };
-}
+export const pizzasInitialState: IPizzasTable = pizzasAdapter.getInitialState({
+  // additional entity state properties
+  selected: '',
+  isAdding: false,
+  isAddingError: '',
+});
