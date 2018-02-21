@@ -9,6 +9,6 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+  .bootstrapModule(AppModule, { preserveWhitespaces: false })
   // tslint:disable-next-line:no-console
   .catch(err => console.log(err));

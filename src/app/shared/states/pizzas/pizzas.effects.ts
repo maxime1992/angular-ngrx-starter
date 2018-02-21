@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -21,28 +21,27 @@ export class PizzasEffects {
 
   // tslint:disable-next-line:member-ordering
   @Effect({ dispatch: true })
-  fetchPizzaDetails$: Observable<Action> = this.actions$
-    .ofType(PizzasActions.FETCH_PIZZA_DETAILS)
-    .pipe(
-      switchMap((action: PizzasActions.FetchPizzaDetails) =>
-        this.pizzasService.fetchPizza(action.payload.id).pipe(
-          map(pizza => new PizzasActions.FetchPizzaDetailsSuccess(pizza)),
-          catchError(err => {
-            if (environment.debug) {
-              console.group();
-              console.warn('Error caught in pizzas.effects:');
-              console.error(err);
-              console.groupEnd();
-            }
+  fetchPizzaDetails$: Observable<Action> = this.actions$.pipe(
+    ofType<PizzasActions.FetchPizzaDetails>(PizzasActions.FETCH_PIZZA_DETAILS),
+    switchMap(action =>
+      this.pizzasService.fetchPizza(action.payload.id).pipe(
+        map(pizza => new PizzasActions.FetchPizzaDetailsSuccess(pizza)),
+        catchError(err => {
+          if (environment.debug) {
+            console.group();
+            console.warn('Error caught in pizzas.effects:');
+            console.error(err);
+            console.groupEnd();
+          }
 
-            return of(
-              new PizzasActions.FetchPizzaDetailsFailed({
-                id: action.payload.id,
-                error: err,
-              })
-            );
-          })
-        )
+          return of(
+            new PizzasActions.FetchPizzaDetailsFailed({
+              id: action.payload.id,
+              error: err,
+            })
+          );
+        })
       )
-    );
+    )
+  );
 }

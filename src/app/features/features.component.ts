@@ -1,14 +1,14 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { distinctUntilChanged, map, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
 import { IStore } from 'app/shared/interfaces/store.interface';
 import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { IUi } from 'app/shared/states/ui/ui.interface';
-import { distinctUntilChanged, map, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-features',
@@ -56,9 +56,9 @@ export class FeaturesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.ui$ = this.store$.select(state => state.ui);
+    this.ui$ = this.store$.pipe(select(state => state.ui));
 
-    this.language$ = this.store$.select(state => state.ui.language);
+    this.language$ = this.store$.pipe(select(state => state.ui.language));
 
     this.language$
       .pipe(

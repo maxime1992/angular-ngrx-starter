@@ -1,6 +1,10 @@
+import { createFeatureSelector } from '@ngrx/store';
+
 import * as UiActions from 'app/shared/states/ui/ui.actions';
 import { uiInitialState } from 'app/shared/states/ui/ui.initial-state';
 import { IUi } from 'app/shared/states/ui/ui.interface';
+
+export const selectUiState = createFeatureSelector<IUi>('ui');
 
 export function uiReducer(
   ui: IUi = uiInitialState(),

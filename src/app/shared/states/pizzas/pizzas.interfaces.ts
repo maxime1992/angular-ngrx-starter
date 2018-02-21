@@ -1,3 +1,5 @@
+import { EntityState } from '@ngrx/entity';
+
 // ------------------
 // FOR A SINGLE PIZZA
 // ------------------
@@ -45,14 +47,12 @@ export interface IPizzaBackendWithDetailsAndFkUi
 // -------------------
 // FOR MULTIPLE PIZZAS
 // -------------------
-// definition of the UI attributes you want to save for all the pizzas
-interface IPizzasUi {
+// definition of the Pizzas with `ids` and `entities` for state normalization
+// thanks to ngrx entity we do not manipulate `ids` and `entities` directly
+export interface IPizzasTable
+  extends EntityState<IPizzaBackendWithDetailsAndFkUi> {
+  // additional entity state properties
+  readonly selected: string;
   readonly isAdding: boolean;
   readonly isAddingError: string;
-}
-
-// definition of the Pizzas with byId and allIds for state normalization
-export interface IPizzasTable extends IPizzasUi {
-  readonly byId: { [key: string]: IPizzaBackendWithDetailsAndFkUi };
-  readonly allIds: string[];
 }
