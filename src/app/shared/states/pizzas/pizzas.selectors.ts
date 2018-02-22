@@ -31,7 +31,7 @@ export const {
   selectTotal: selectPizzaTotal,
 } = pizzasAdapter.getSelectors();
 
-// by usgin the createSelector function you'll be able to
+// by using the createSelector function you'll be able to
 // keep excellent performance thanks to memoization
 export const selectCurrentPizzaId = createSelector(
   selectPizzasState,
