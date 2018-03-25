@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -11,7 +11,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 // import 'hammerjs';
 
 import { LANGUAGES } from 'app/core/injection-tokens';
-import { RuntimeEnvironmentService } from 'app/core/runtime-environment.service';
+import {
+  initRuntimeEnvironment,
+  RuntimeEnvironmentService,
+} from 'app/core/runtime-environment.service';
 import { httpLoaderFactory } from 'app/shared/helpers/aot.helper';
 import { metaReducers, reducers } from 'app/shared/states/root.reducer';
 import { environment } from 'environments/environment';
@@ -57,6 +60,12 @@ import { environment } from 'environments/environment';
       useValue: ['en', 'fr'],
     },
     RuntimeEnvironmentService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initRuntimeEnvironment,
+      deps: [RuntimeEnvironmentService],
+      multi: true,
+    },
   ],
 })
 export class CoreModule {}
